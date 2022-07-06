@@ -10,8 +10,8 @@ const SolutionSchema = new Schema({
    solution:{
     type:String,
     required:true,
-   },
-},{timestamps:true});
+   }
+});
 
-// const solution = mongoose.model('solution',SolutionSchema);
-module.exports.SolutionSchema =SolutionSchema;
+const solution = mongoose.model('solution',SolutionSchema);
+module.exports = solution;

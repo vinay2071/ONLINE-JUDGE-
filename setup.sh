@@ -1,0 +1,1 @@
+mongoimport -d OJ -c problems --file data/problem.json

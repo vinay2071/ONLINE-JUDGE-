@@ -6,13 +6,13 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoute')
 const problemRoutes = require('./routes/problemRoutes')
-
+const submissionsRoutes = require('./routes/submissionsRoutes')
 //middleware
 app.use(express.static('public'));
 app.use(express.json())
 
 // view engine
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 
 
   
@@ -33,4 +33,5 @@ mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true }, (err,c
 // app.get('/',(req,res) => res.render('homeredirect'));
 app.use(authRoutes);
 app.use(problemRoutes);
+app.use(submissionsRoutes)
 app.listen(5000, () => console.log(`Example app listening on port ${5000}!`))

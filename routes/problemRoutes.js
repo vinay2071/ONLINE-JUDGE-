@@ -1,8 +1,8 @@
 const {Router} = require('express')
-const {getProblems,ProblemId} = require("../controller/problemController")
+const {getProblems,getProblemById} = require("../controller/problemController")
 const router = Router();
 
 
 router.get('/',getProblems);
-router.get('/:ProblemId',ProblemId)
+router.get('/:id',getProblemById)
 module.exports = router;
