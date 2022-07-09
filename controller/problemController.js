@@ -1,8 +1,16 @@
 const Problem = require("../models/problemModel");
+// const {requireAuth} = require('../middleware/authMiddleware');
 
 const getProblemById = async function (req,res){
-const id = await Problem.findById(req.params.id);
-return res.json(id);
+    try{
+        const id = await Problem.findById(req.params.id);
+        return res.json(id);
+       
+    }
+    catch (err){
+        res.status(500).json()
+    }
+
     
 }
 
