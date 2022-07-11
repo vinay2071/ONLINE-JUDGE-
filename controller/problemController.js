@@ -1,26 +1,37 @@
 const Problem = require("../models/problemModel");
-// const {requireAuth} = require('../middleware/authMiddleware');
+// const mongoose = require("mongoose");
 
-const getProblemById = async function (req,res){
-    try{
-        const id = await Problem.findById(req.params.id);
-        return res.json(id);
-       
+const getProblems = async function (req, res) {
+  Problem.find()
+    .then((result) => {
+      res.render("questions", {
+        prb: result
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const getProblemById = async function (req, res) {
+  try {
+    // console.log("hiiii")
+    const id = req.params.id;
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      Problem.findById(req.params.id).then((result) => {
+        res.render("question",{prb:result});
+      });
     }
-    catch (err){
-        res.status(500).json()
-    }
-
-    
-}
-
-const getProblems = async function(req,res){
-    const problems = await Problem.find();
-    return res.json(problems);
-}
-
+  } catch (err) {
+    res.status(500).json();
+  }
+};
 
 module.exports = {
-    getProblems,
-    getProblemById,
-}
+  getProblems,
+  getProblemById,
+};
+
+// const id = await Problem.findById(req.params.id);
+// if(id.match(/^[0-9a-fA-F]{24}$/)){
+// Problem.findById(req.params.id).then(res=>{

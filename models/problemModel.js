@@ -8,9 +8,13 @@ const ProblemSchema = new Schema({
         required:true,
     },
     // solutions:[{type:solution}],
-    // problemStatement:{
-    //     type:String,
-    //     required:true
+    problemStatement:{
+        type:String,
+        required:true
+    },
+    // testcases:{
+    //        type:String,
+    //        required:true
     // },
     difficulty:{
         type:String,

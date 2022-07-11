@@ -4,5 +4,5 @@ const router = Router();
 
 
 router.get('/',getProblems);
-router.get('/:id',getProblemById)
+router.get('/problem/:id',getProblemById)
 module.exports = router;

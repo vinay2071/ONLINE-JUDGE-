@@ -1,0 +1,33 @@
+<%- include('partials/header'); -%>
+<div class="container p-4">
+  
+  <% if(!prb.title){%>
+    <div class="d-flex justify-content-between list-group-item">
+      <h3 class="fw-bold">Problem name</h3>
+      <h3 class="fw-bold">Difficulty</h3>
+    </div>
+  <%}%>
+  <ol class="list-group list-group-numbered">
+   <% prb.forEach(prbs=>{%>
+   <li class="list-group-item list-group-item-action d-flex justify-content-around align-items-start">
+ 
+   <div class="ms-2 me-auto">
+   <h6><a href="/problem/<%=prbs._id%>" class=" fw-bolder text-decoration-none text-capitalize p-3"><%= prbs.title%></a></h6>
+ </div>
+ <% if(prbs.difficulty=="EASY"){ %>
+  <span class="badge rounded-pill bg-success">Easy</span>
+  <%} %>
+  <% if(prbs.difficulty=="MEDIUM"){ %>
+    <span class="badge rounded-pill bg-warning">MEdium</span>
+    <%} %>
+    <% if(prbs.difficulty=="HARD"){ %>
+      <span class="badge rounded-pill bg-danger">Hard</span>
+      <%} %>
+  </li>
+       <%})%>
+  </ol>
+
+
+      
+
+<%- include('partials/footer'); -%>

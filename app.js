@@ -12,6 +12,7 @@ const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 const {requireAuth,checkUser} = require('./middleware/authMiddleware');
 
+
 //middleware
 app.use(express.static('public'));
 app.use(express.json())
@@ -39,6 +40,13 @@ mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true }, (err,c
 
 
 //routes
+// app.get('/hehe',(req,res)=>{
+// Problem.find().then(result=>{
+//   res.render('questions',{prb:result})
+// }).catch(err=>{
+//     console.log(err);
+// })
+// })
 app.get('*',checkUser)
 app.get('/home',requireAuth,(req,res) => res.render('home'));
 app.use(authRoutes);
